@@ -3,7 +3,7 @@ var bubbles = [];
 
 //iniciamos el canvas
 function setup(){
-  createCanvas(600, 600);
+  createCanvas(1900, 900);
   bubbles.push(new Bubble());
 }
 //Dibujamos la burbuja
@@ -15,10 +15,11 @@ function draw(){
   }
 }
 
+//Cuando pulsamos sobre una burbuja, esta se divide en 2
 function mousePressed(){
   for (var i = bubbles.length -1; i >= 0; i--) {
     if (bubbles[i].clicked(mouseX, mouseY)) {
-      
+
       bubbles.push(bubbles[i].explosion());
       bubbles.push(bubbles[i].explosion());
 
