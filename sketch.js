@@ -16,9 +16,13 @@ function draw(){
 }
 
 function mousePressed(){
-  for (var i = 0; i < bubbles.length; i++) {
+  for (var i = bubbles.length -1; i >= 0; i--) {
     if (bubbles[i].clicked(mouseX, mouseY)) {
-      console.log("has dado a la burbuja")
+      
+      bubbles.push(bubbles[i].explosion());
+      bubbles.push(bubbles[i].explosion());
+
+      bubbles.splice(i, 1);
     }
   }
 }

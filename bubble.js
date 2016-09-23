@@ -1,9 +1,14 @@
-function Bubble(){
+function Bubble(pos, rad, col){
   //Hacemos que aparezca en una posicion aleatoria
-  this.position = createVector(random(width), random(height));
-  this.radius = 80;
+  if (pos) {
+    this.position = pos.copy();
+  }else{
+    this.position = createVector(random(width), random(height));   
+  }
+  
+  this.radius = rad || 80;
   //generamos un color aleatorio
-  this.colorBubble = color(random(100,255),0,random(100,255));
+  this.colorBubble = col || color(random(100,255),0,random(100,255));
 
   //Controlamos la explosion
   this.clicked = function(x, y){
@@ -14,6 +19,13 @@ function Bubble(){
     }else{
       return false;
     }
+  }
+
+  //funcion para la duplicación de las burbujas
+  this.explosion =function(){
+      var bubble1 = new Bubble(this.position, this.radius/2,
+       this.colorBubble);
+      return bubble1; 
   }
 
   //Controlamos el movimiento de nuestra burbuja
